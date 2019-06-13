@@ -15,3 +15,8 @@ variable "node_count" {
 variable "public_key_path" {
   description = "Path to Public Key"
 }
+
+variable "region" {
+  description = "AWS Region"
+  default     = "us-east-2"
+}
