@@ -1,7 +1,3 @@
-variable "ami" {
-  description = "Which OmniOS AMI"
-}
-
 variable "instance_type" {
   default     = "t2.micro"
   description = "Instance size"
