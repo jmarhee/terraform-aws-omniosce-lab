@@ -20,6 +20,6 @@ resource "aws_instance" "omni_box" {
 }
 
 output "instances" {
-	  description = "AWS Instances created in lab"
-	  value = "${join("\t\n", aws_instance.omni_box.*.public_dns)}"
+  description = "AWS Instances created in lab"
+  value       = "${join("\t\n", aws_instance.omni_box.*.public_dns)}"
 }
