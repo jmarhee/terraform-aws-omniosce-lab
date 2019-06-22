@@ -8,10 +8,6 @@ variable "node_count" {
   description = "Number of nodes in a lab pool"
 }
 
-variable "public_key_path" {
-  description = "Path to Public Key"
-}
-
 variable "region" {
   description = "AWS Region"
   default     = "us-east-2"
@@ -37,5 +33,13 @@ variable "region_ami" {
     ap-southeast-1 = "ami-01c8f677b79c2744f"
     ap-southeast-2 = "ami-0a351e7460c633be1"
     ca-central-1   = "ami-04dc095f40f53ef3b"
+  }
+}
+
+variable "key_pair_path" {
+  type = "map"
+  default = {
+    public_key_path = "~/.ssh/id_rsa.pub",
+    private_key_path = "~/.ssh/id_rsa",
   }
 }

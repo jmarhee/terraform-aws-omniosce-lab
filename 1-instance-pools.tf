@@ -5,5 +5,5 @@ module "omni_lab_alpha" {
   ami             = "${var.region_ami["${var.region}"]}"
   instance_type   = "${var.instance_type}"
   node_count      = "${var.node_count}"
-  public_key_path = "${var.public_key_path}"
+  key_pair_path = "${var.key_pair_path}"
 }

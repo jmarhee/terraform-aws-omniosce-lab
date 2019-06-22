@@ -1,6 +1,8 @@
 OmniOS Lab on AWS
 ===
 
+[![Build Status](https://cloud.drone.io/api/badges/jmarhee/omnios-tf-aws-lab/status.svg)](https://cloud.drone.io/jmarhee/omnios-tf-aws-lab)
+
 Terraform project to spin up pod of OmniOS boxes.
 
 Setup

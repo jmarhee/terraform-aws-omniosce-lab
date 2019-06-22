@@ -1,0 +1,28 @@
+kind: pipeline
+name: default
+
+steps:
+  
+- name: Deploy
+  image: alpine
+  environment:
+    AWS_ACCESS_KEY_ID:
+      from_secret: AWS_ACCESS_KEY_ID
+    AWS_SECRET_ACCESS_KEY:
+      from_secret: AWS_SECRET_ACCESS_KEY
+    AWS_DEFAULT_REGION:
+      from_secret: AWS_DEFAULT_REGION
+    TF_VAR_node_count:
+      from_secret: "1"
+    TF_VAR_lab_name:
+      from_secret: "drone-ci"
+  commands:
+  - apk --update add curl
+  - curl --silent --output terraform.zip "https://releases.hashicorp.com/terraform/0.11.11/terraform_0.11.11_linux_amd64.zip"
+  - unzip terraform.zip ; rm -f terraform.zip; chmod +x terraform
+  - mkdir -p ${HOME}/bin ; export PATH=${PATH}:${HOME}/bin; mv terraform ${HOME}/bin/
+  - terraform -v
+  - terraform init 
+  - terraform validate
+  - terraform apply -auto-approve
+  - terraform destroy -auto-approve
