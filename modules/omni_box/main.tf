@@ -38,9 +38,9 @@ resource "aws_instance" "omni_box" {
     Name = "${format("omni-${var.lab_name}-%02d", count.index)}"
   }
   connection {
-    host = "${self.public_dns}"
-    type     = "ssh"
-    user     = "root"
+    host        = "${self.public_dns}"
+    type        = "ssh"
+    user        = "root"
     private_key = "${file("${var.key_pair_path["private_key_path"]}")}"
   }
   provisioner "remote-exec" {

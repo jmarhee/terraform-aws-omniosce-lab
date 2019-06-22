@@ -3,6 +3,11 @@ variable "instance_type" {
   description = "Instance size"
 }
 
+variable "lab_name" {
+  default     = "primary"
+  description = "Lab Name"
+}
+
 variable "node_count" {
   default     = "1"
   description = "Number of nodes in a lab pool"
@@ -37,9 +42,11 @@ variable "region_ami" {
 }
 
 variable "key_pair_path" {
+  #This defaults to drone for test integration purposes
+  #Update to use your keypaths
   type = "map"
   default = {
-    public_key_path = "~/.ssh/id_rsa.pub",
-    private_key_path = "~/.ssh/id_rsa",
+    public_key_path  = "drone.pub",
+    private_key_path = "drone",
   }
 }

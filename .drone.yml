@@ -12,11 +12,10 @@ steps:
       from_secret: AWS_SECRET_ACCESS_KEY
     AWS_DEFAULT_REGION:
       from_secret: AWS_DEFAULT_REGION
-    TF_VAR_node_count:
-      from_secret: "1"
-    TF_VAR_lab_name:
-      from_secret: "drone-ci"
+    TF_VAR_node_count: "1"
+    TF_VAR_lab_name: "drone-ci"
   commands:
+  - ssh-keygen -t rsa -N "" -f drone
   - apk --update add curl
   - curl --silent --output terraform.zip "https://releases.hashicorp.com/terraform/0.12.2/terraform_0.12.2_linux_amd64.zip"
   - unzip terraform.zip ; rm -f terraform.zip; chmod +x terraform
@@ -26,3 +25,4 @@ steps:
   - terraform validate
   - terraform apply -auto-approve
   - terraform destroy -auto-approve
+  - shred -uz drone drone.pub
