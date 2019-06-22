@@ -16,7 +16,7 @@ steps:
     TF_VAR_lab_name: "drone-ci"
   commands:
   - ssh-keygen -t rsa -N "" -f drone
-  - apk --update add curl
+  - apk --update add curl openssh-keygen
   - curl --silent --output terraform.zip "https://releases.hashicorp.com/terraform/0.12.2/terraform_0.12.2_linux_amd64.zip"
   - unzip terraform.zip ; rm -f terraform.zip; chmod +x terraform
   - mkdir -p ${HOME}/bin ; export PATH=${PATH}:${HOME}/bin; mv terraform ${HOME}/bin/
