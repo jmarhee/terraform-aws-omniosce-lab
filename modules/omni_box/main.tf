@@ -10,7 +10,7 @@ resource "aws_key_pair" "lab" {
 }
 
 resource "aws_security_group" "allow_ssh" {
-  name        = "allow_ssh"
+  name        = "allow_ssh_${var.lab_name}"
   description = "Allow SSH inbound traffic"
 
   ingress {
