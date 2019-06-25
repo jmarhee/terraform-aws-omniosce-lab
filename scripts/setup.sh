@@ -25,6 +25,11 @@ clone_gate() {
 	cd /code ; \
 	git clone https://github.com/illumos/illumos-gate.git
 	echo "illumos-gate cloned to /code/illumos-gate..."
+	echo "Setting ON_CLOSED_BINS"
+	echo ON_CLOSED_BINS=/opt/onbld/closed | tee -a /root/.profile
+	echo "Copying illumos.sh"
+	cd /code/illumos-gate ; cp usr/src/tools/env/illumos.sh .
+	echo "Modify /code/illumos-gate/illumos.sh before attempting to build..."
 }
 
 install_pkgsrc ; \
