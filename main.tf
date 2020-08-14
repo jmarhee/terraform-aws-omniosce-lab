@@ -4,6 +4,12 @@ variable "instance_type" {}
 variable "node_count" {}
 variable "key_pair_path" {}
 
+provider "aws" {
+
+  region = "${var.region}"
+
+}
+
 resource "aws_key_pair" "lab" {
   key_name   = "lab-key-${var.lab_name}"
   public_key = "${file("${var.key_pair_path["public_key_path"]}")}"
